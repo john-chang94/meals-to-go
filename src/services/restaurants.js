@@ -17,7 +17,8 @@ export const restaurantsTransform = ({ results = [] }) => {
     restaurant.photos = restaurant.photos.map((photo) => {
       return mockImages[Math.ceil(Math.random() * (mockImages.length - 1))];
     });
-    return {
+
+    return { // Add properties to each restaurant and return
       ...restaurant,
       isOpenNow: restaurant.opening_hours && restaurant.opening_hours.open_now,
       isTempClosed: restaurant.business_status === "CLOSED_TEMPORARILY",
