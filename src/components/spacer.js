@@ -28,7 +28,7 @@ const SpacerView = styled.View`
 `;
 
 // [ANDROID] Cannot directly return and render a Spacer component before app loads
-// so we use a normal component and render the SpacerView with any children components
+// so we use a normal component and render the SpacerView with children components
 export default function Spacer({ position, size, children }) {
   const theme = useTheme();
   const variant = getVariant(position, size, theme);

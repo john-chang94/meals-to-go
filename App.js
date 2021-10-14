@@ -16,6 +16,7 @@ import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
 import { theme } from "./src/theme";
 import { SafeArea } from "./src/components/safeArea";
 import RestaurantScreen from "./src/features/restaurants/screens/restaurants";
+import { RestaurantsContextProvider } from "./src/services/restaurantsContext";
 
 const Tab = createBottomTabNavigator();
 
@@ -36,7 +37,8 @@ const Map = () => (
   </SafeArea>
 );
 
-const createScreenOptions = ({ route }) => { // route is passed from navigator
+const createScreenOptions = ({ route }) => {
+  // route is passed from navigator
   const iconName = TAB_ICON[route.name];
   return {
     activeTintColor: "tomato",
@@ -63,13 +65,17 @@ export default function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <NavigationContainer>
-          <Tab.Navigator screenOptions={createScreenOptions}>
-            <Tab.Screen name="Restaurants" component={RestaurantScreen} />
-            <Tab.Screen name="Map" component={Map} />
-            <Tab.Screen name="Settings" component={Settings} />
-          </Tab.Navigator>
-        </NavigationContainer>
+        <RestaurantsContextProvider>
+
+          <NavigationContainer>
+            <Tab.Navigator screenOptions={createScreenOptions}>
+              <Tab.Screen name="Restaurants" component={RestaurantScreen} />
+              <Tab.Screen name="Map" component={Map} />
+              <Tab.Screen name="Settings" component={Settings} />
+            </Tab.Navigator>
+          </NavigationContainer>
+          
+        </RestaurantsContextProvider>
       </ThemeProvider>
       <ExpoStatusBar style="auto" />
     </>

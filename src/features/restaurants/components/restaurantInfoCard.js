@@ -21,7 +21,7 @@ export default function RestaurantInfoCard({ restaurant = {} }) {
   const {
     name = "Some Restaurant",
     icon = "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
-    images = [
+    photos = [
       "https://www.foodiesfeed.com/wp-content/uploads/2019/06/top-view-for-box-of-2-burgers-home-made-600x899.jpg",
     ],
     address = "123 Main St.",
@@ -34,7 +34,7 @@ export default function RestaurantInfoCard({ restaurant = {} }) {
 
   return (
     <RestaurantCard>
-      <RestaurantCardCover source={{ uri: images[0] }} />
+      <RestaurantCardCover source={{ uri: photos[0] }} />
       <Info>
         <Text variant="label">{name}</Text>
         <Section>
