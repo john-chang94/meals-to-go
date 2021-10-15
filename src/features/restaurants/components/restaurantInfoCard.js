@@ -27,7 +27,7 @@ export default function RestaurantInfoCard({ restaurant = {} }) {
     address = "123 Main St.",
     isOpenNow = true,
     rating = 4,
-    isTemporarilyClosed = true,
+    isTempClosed = true
   } = restaurant;
 
   const ratingArray = Array.from(new Array(Math.floor(rating)));
@@ -39,12 +39,12 @@ export default function RestaurantInfoCard({ restaurant = {} }) {
         <Text variant="label">{name}</Text>
         <Section>
           <Rating>
-            {ratingArray.map(() => (
-              <SvgXml xml={star} width={20} height={20} />
+            {ratingArray.map((_, i) => (
+              <SvgXml key={i} xml={star} width={20} height={20} />
             ))}
           </Rating>
           <SectionEnd>
-            {isTemporarilyClosed && (
+            {isTempClosed && (
               <Text variant="error">TEMPORARILY CLOSED</Text>
             )}
             <Spacer position="left" size="large">

@@ -20,6 +20,7 @@ export const restaurantsTransform = ({ results = [] }) => {
 
     return { // Add properties to each restaurant and return
       ...restaurant,
+      address: restaurant.vicinity,
       isOpenNow: restaurant.opening_hours && restaurant.opening_hours.open_now,
       isTempClosed: restaurant.business_status === "CLOSED_TEMPORARILY",
     };
@@ -27,12 +28,3 @@ export const restaurantsTransform = ({ results = [] }) => {
 
   return camelize(mappedResults);
 };
-
-restaurantsRequest()
-  .then(restaurantsTransform)
-  .then((transformedResponse) => {
-    // console.log(transformedResponse);
-  })
-  .catch((err) => {
-    console.log(err);
-  });
