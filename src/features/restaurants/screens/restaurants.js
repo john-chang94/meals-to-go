@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import { FlatList } from "react-native";
+import { FlatList, TouchableOpacity } from "react-native";
 import { ActivityIndicator, Colors } from "react-native-paper";
 
 import { RestaurantsContext } from "../../../services/restaurantsContext";
@@ -11,7 +11,8 @@ import Spacer from "../../../components/spacer";
 import Search from "../../../components/search";
 
 const RestaurantList = styled(FlatList).attrs({
-  contentContainerStyle: { // We can also include this inline with the component instead of using 'attrs'
+  contentContainerStyle: {
+    // We can also include this inline with the component instead of using 'attrs'
     padding: 16,
   },
 })`
@@ -22,7 +23,9 @@ const Loader = styled(ActivityIndicator)`
   margin-top: 100px;
 `;
 
-export default function RestaurantScreen() {
+export default function RestaurantScreen({ navigation }) {
+  // navigation comes from stack navigator
+  console.log(navigation);
   const { restaurants, isLoading, error } = useContext(RestaurantsContext);
 
   return (
@@ -34,9 +37,11 @@ export default function RestaurantScreen() {
       <RestaurantList
         data={restaurants}
         renderItem={({ item }) => (
-          <Spacer position="bottom" size="large">
-            <RestaurantInfoCard restaurant={item} />
-          </Spacer>
+          <TouchableOpacity onPress={() => navigation.navigate("RestaurantDetail")}>
+            <Spacer position="bottom" size="large">
+              <RestaurantInfoCard restaurant={item} />
+            </Spacer>
+          </TouchableOpacity>
         )}
         keyExtractor={(item) => item.name}
       />
