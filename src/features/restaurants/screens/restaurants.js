@@ -4,6 +4,7 @@ import { FlatList, TouchableOpacity } from "react-native";
 import { ActivityIndicator, Colors } from "react-native-paper";
 
 import { RestaurantsContext } from "../../../services/restaurantsContext";
+import { FavoritesContext } from "../../../services/favoritesContext";
 import { SafeArea } from "../../../components/safeArea";
 
 import RestaurantInfoCard from "../components/restaurantInfoCard";
@@ -25,7 +26,8 @@ const Loader = styled(ActivityIndicator)`
 
 export default function Restaurants({ navigation }) {
   // navigation comes from stack navigator
-  const { restaurants, isLoading, error } = useContext(RestaurantsContext);
+  const { restaurants, isLoading } = useContext(RestaurantsContext);
+  const { favorites } = useContext(FavoritesContext);
 
   return (
     <SafeArea>

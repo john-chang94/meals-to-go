@@ -5,6 +5,7 @@ import star from "../../../../assets/star";
 import open from "../../../../assets/open";
 import Spacer from "../../../components/spacer";
 import { Text } from "../../../components/text";
+import Favorite from "../../../components/favorite";
 
 import {
   RestaurantCard,
@@ -34,6 +35,7 @@ export default function RestaurantInfoCard({ restaurant = {} }) {
 
   return (
     <RestaurantCard>
+      <Favorite restaurant={restaurant} />
       <RestaurantCardCover source={{ uri: photos[0] }} />
       <Info>
         <Text variant="label">{name}</Text>
