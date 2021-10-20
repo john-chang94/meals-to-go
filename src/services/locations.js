@@ -6,7 +6,7 @@ export const locationTransform = (result) => {
     const { geometry = {} } = camelizedResponse.results[0]; // geometry set to empty obj as default
     const { lat, lng } = geometry.location;
 
-    return { lat, lng };
+    return { lat, lng, viewport: geometry.viewport };
 }
 
 export const locationRequest = (search) => {

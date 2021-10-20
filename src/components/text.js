@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+// theme comes from ThemeProvider from styled-components in App.js
 const defaultTextStyles = (theme) => `
   font-family: ${theme.fonts.body};
   font-weight: ${theme.fontWeights.regular};

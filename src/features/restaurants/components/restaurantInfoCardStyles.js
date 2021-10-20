@@ -10,12 +10,6 @@ export const RestaurantCardCover = styled(Card.Cover)`
   background-color: ${(props) => props.theme.colors.bg.primary};
 `;
 
-// export const Title = styled.Text`
-//   color: ${(props) => props.theme.colors.ui.primary};
-//   font-family: ${(props) => props.theme.fonts.heading};
-//   font-size: ${(props) => props.theme.fontSizes.body};
-// `;
-
 export const Info = styled.View`
   padding: ${(props) => props.theme.space[3]};
 `;

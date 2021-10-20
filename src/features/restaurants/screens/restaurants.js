@@ -23,9 +23,8 @@ const Loader = styled(ActivityIndicator)`
   margin-top: 100px;
 `;
 
-export default function RestaurantScreen({ navigation }) {
+export default function Restaurants({ navigation }) {
   // navigation comes from stack navigator
-  console.log(navigation);
   const { restaurants, isLoading, error } = useContext(RestaurantsContext);
 
   return (
@@ -37,7 +36,11 @@ export default function RestaurantScreen({ navigation }) {
       <RestaurantList
         data={restaurants}
         renderItem={({ item }) => (
-          <TouchableOpacity onPress={() => navigation.navigate("RestaurantDetail")}>
+          <TouchableOpacity
+            onPress={() =>
+              navigation.navigate("RestaurantDetail", { restaurant: item })
+            }
+          >
             <Spacer position="bottom" size="large">
               <RestaurantInfoCard restaurant={item} />
             </Spacer>
