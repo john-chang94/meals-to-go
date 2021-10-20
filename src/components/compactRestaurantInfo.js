@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import WebView from "react-native-webview"; // Display image for android
+import WebView from "react-native-webview"; // Display image for android in map view
 import { Platform } from "react-native";
 import { Text } from "./text";
 
@@ -24,8 +24,9 @@ const Item = styled.View`
 
 const isAndroid = Platform.OS === 'android';
 
-export default function CompactRestaurantInfo({ restaurant }) {
-    const Image = isAndroid ? CompactWebView : CompactImage;
+export default function CompactRestaurantInfo({ restaurant, isMap }) {
+    // isMap to enable CompactWebView ONLY for map view, we still use an image in favorites
+    const Image = (isAndroid && isMap) ? CompactWebView : CompactImage;
 
     return (
         <Item>
