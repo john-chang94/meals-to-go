@@ -3,8 +3,8 @@ import styled from "styled-components";
 import { FlatList, TouchableOpacity } from "react-native";
 import { ActivityIndicator, Colors } from "react-native-paper";
 
-import { RestaurantsContext } from "../../../services/restaurantsContext";
-import { FavoritesContext } from "../../../services/favoritesContext";
+import { RestaurantsContext } from "../../../contexts/restaurantsContext";
+import { FavoritesContext } from "../../../contexts/favoritesContext";
 import { SafeArea } from "../../../components/safeArea";
 
 import RestaurantInfoCard from "../components/restaurantInfoCard";
