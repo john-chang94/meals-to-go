@@ -5,7 +5,6 @@ import { AuthContext } from "../contexts/authContext";
 import { AppNavigator } from "./appNavigator";
 import { AccountStack } from "./accountStack";
 
-
 export const Navigation = () => {
   const { isAuthenticated } = useContext(AuthContext);
 

@@ -14,15 +14,40 @@ export const AuthContextProvider = ({ children }) => {
     setIsLoading(true);
     signIn(email, password)
       .then((user) => {
+        setIsLoading(false);
         setUser(user);
       })
       .catch((err) => {
-        setError(err);
+        setIsLoading(false);
+        setError(err.toString()); // toString() required to render error message
+      });
+  };
+
+  const onRegister = (email, password, confirmPassword) => {
+    if (password !== confirmPassword) {
+      setError("Error: Passwords do not match");
+      return;
+    }
+    
+    setIsLoading(true);
+
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then((user) => {
+        setIsLoading(false);
+        setUser(user);
+      })
+      .catch((err) => {
+        setIsLoading(false);
+        setError(err.toString());
       });
   };
 
   return (
-    <AuthContext.Provider value={{ user, isLoading, error, onSignIn }}>
+    <AuthContext.Provider
+      value={{ isAuthenticated: !!user, user, isLoading, error, onSignIn, onRegister }}
+    >
       {children}
     </AuthContext.Provider>
   );
