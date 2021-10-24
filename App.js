@@ -11,9 +11,6 @@ import {
 import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
 
 import { theme } from "./src/theme";
-import { RestaurantsContextProvider } from "./src/contexts/restaurantsContext";
-import { LocationContextProvider } from "./src/contexts/locationContext";
-import { FavoritesContextProvider } from "./src/contexts/favoritesContext";
 import { AuthContextProvider } from "./src/contexts/authContext";
 import { Navigation } from "./src/navigation";
 
@@ -59,19 +56,14 @@ export default function App() {
     return null;
   }
 
-  // if (!isAuthenticated) return null;
-
+  // Moved other context providers to app navigator.
+  // Auth context should be the only one to load on app launch.
+  // Other contexts may be only needed when a particular navigator loads.
   return (
     <>
       <ThemeProvider theme={theme}>
         <AuthContextProvider>
-          <FavoritesContextProvider>
-            <LocationContextProvider>
-              <RestaurantsContextProvider>
-                <Navigation />
-              </RestaurantsContextProvider>
-            </LocationContextProvider>
-          </FavoritesContextProvider>
+          <Navigation />
         </AuthContextProvider>
       </ThemeProvider>
 
