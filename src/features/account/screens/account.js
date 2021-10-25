@@ -10,7 +10,7 @@ import {
   AnimationWrapper
 } from "../components/accountStyles";
 
-export default function Account({ navigation }) {
+export default function AccountScreen({ navigation }) {
   return (
     <AccountBackground>
       <AccountCover />

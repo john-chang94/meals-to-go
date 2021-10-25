@@ -14,7 +14,7 @@ import { AuthContext } from "../../../contexts/authContext";
 import Spacer from "../../../components/spacer";
 import { Text } from "../../../components/text";
 
-export default function Register({ navigation }) {
+export default function RegisterScreen({ navigation }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");

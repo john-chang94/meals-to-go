@@ -14,7 +14,7 @@ import { AuthContext } from "../../../contexts/authContext";
 import Spacer from "../../../components/spacer";
 import { Text } from "../../../components/text";
 
-export default function SignIn({ navigation }) {
+export default function SignInScreen({ navigation }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
