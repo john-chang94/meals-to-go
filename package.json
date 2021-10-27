@@ -19,11 +19,15 @@
     "@react-navigation/native": "^6.0.4",
     "@react-navigation/native-stack": "^6.2.4",
     "@react-navigation/stack": "^6.0.11",
+    "axios": "^0.24.0",
     "camelize": "^1.0.0",
     "eslint": "^7.32.0",
     "expo": "~42.0.1",
+    "expo-camera": "~11.2.2",
     "expo-font": "~9.2.1",
     "expo-status-bar": "~1.0.4",
+    "firebase": "8.2.3",
+    "lottie-react-native": "4.0.2",
     "prettier": "^2.4.1",
     "react": "16.13.1",
     "react-dom": "16.13.1",
@@ -36,10 +40,7 @@
     "react-native-svg": "12.1.1",
     "react-native-web": "^0.17.5",
     "react-native-webview": "11.6.2",
-    "styled-components": "^5.3.1",
-    "firebase": "8.2.3",
-    "lottie-react-native": "4.0.2",
-    "expo-camera": "~11.2.2"
+    "styled-components": "^5.3.1"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0"
