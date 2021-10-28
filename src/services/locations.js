@@ -1,5 +1,6 @@
 import axios from "axios";
 import camelize from "camelize";
+import { host } from "../../env";
 
 export const locationTransform = (result) => {
     const camelizedResponse = camelize(result); // Adding camelize incase google api adds more stuff
@@ -10,12 +11,6 @@ export const locationTransform = (result) => {
 }
 
 export const locationRequest = async (search) => {
-    const res = await axios.get(`http://cf33-2603-8001-3140-784c-fc28-d118-35ee-9627.ngrok.io/meals-to-go-a18a6/us-central1/geocode?city=${search}`);
+    const res = await axios.get(`${host}/geocode?city=${search}`);
     return res.data;
-
-    // return fetch(
-    //     `https://cf33-2603-8001-3140-784c-fc28-d118-35ee-9627.ngrok.io/meals-to-go-a18a6/us-central1/geocode?city=${search}`
-    //   ).then((res) => {
-    //     return res.json();
-    //   });
 }
