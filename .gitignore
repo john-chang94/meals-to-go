@@ -13,3 +13,8 @@ web-build/
 .DS_Store
 
 */node_modules/**/*
+firebase-debug.log
+ui-debug.log
+.runtimeconfig.json
+
+.env
