@@ -4,6 +4,7 @@ import { host } from "../../env";
 
 export const restaurantsRequest = async (location = "37.7749295,-122.4194155") => {
   const res = await axios.get(`${host}/placesNearby?location=${location}`);
+  console.log(res.data)
   return res.data;
 }
 

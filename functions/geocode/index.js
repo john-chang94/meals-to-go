@@ -1,26 +1,26 @@
 require("dotenv").config();
-const { locations } = require("./geocodes");
+const { cities } = require("./geocodes");
 
 module.exports.geocodeRequest = (req, res, client) => {
   const { city, mock } = req.query;
 
   if (mock === "true") {
-    const location = locations[city.toLowerCase()];
+    const location = cities[city.toLowerCase()];
     return res.json(location);
   }
 
   client
-    .elevation({
+    .geocode({
       params: {
-        locations: city,
+        address: city,
         key: process.env.GOOGLE_MAPS_API,
       },
       timeout: 1000,
     })
     .then((response) => {
-      return res.json(response.data);
+      return res.json(response.data.results);
     })
     .catch((err) => {
-      console.log(err.response.data.error_message);
+      console.log(err.response.data);
     });
 };

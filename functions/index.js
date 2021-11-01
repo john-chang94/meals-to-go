@@ -15,5 +15,5 @@ exports.geocode = functions.https.onRequest((req, res) => {
 })
 
 exports.placesNearby = functions.https.onRequest((req, res) => {
-  placesRequest(req, res);
+  placesRequest(req, res, client);
 });

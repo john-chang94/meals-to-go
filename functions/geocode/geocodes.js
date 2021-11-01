@@ -1,4 +1,4 @@
-module.exports.locations = {
+module.exports.cities = {
     antwerp: {
       results: [
         {

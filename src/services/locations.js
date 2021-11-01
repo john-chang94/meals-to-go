@@ -12,5 +12,6 @@ export const locationTransform = (result) => {
 
 export const locationRequest = async (search) => {
     const res = await axios.get(`${host}/geocode?city=${search}`);
+    console.log(res.data)
     return res.data;
 }
