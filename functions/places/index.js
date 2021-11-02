@@ -3,14 +3,13 @@ const { mocks, addMockImage } = require("./mock");
 
 module.exports.placesRequest = (req, res, client) => {
   const { location, mock } = req.query;
-
   if (mock === "true") {
     const data = mocks[location];
     if (data) {
       data.results = data.results.map(addMockImage);
     }
-  
-    return res.json(data);
+
+    return res.json(data.results);
   }
 
   client.placesNearby({

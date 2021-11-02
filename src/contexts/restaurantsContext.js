@@ -1,9 +1,4 @@
-import React, {
-  useState,
-  useEffect,
-  createContext,
-  useContext
-} from "react";
+import React, { useState, useEffect, createContext, useContext } from "react";
 import { LocationContext } from "./locationContext";
 import {
   restaurantsRequest,
@@ -18,20 +13,21 @@ export const RestaurantsContextProvider = ({ children }) => {
   const [error, setError] = useState(null);
   const { location } = useContext(LocationContext);
 
-  const getRestaurants = (location) => {
+  const getRestaurants = async (location) => {
     setIsLoading(true);
     setRestaurants([]); // Reset restaurant list before search
 
-    restaurantsRequest(location)
-      .then(restaurantsTransform)
-      .then((restaurants) => {
-        setIsLoading(false);
-        setRestaurants(restaurants);
-      })
-      .catch((err) => {
-        setIsLoading(false);
-        setError(err);
-      });
+    try {
+      const restaurants = await restaurantsRequest(location);
+      const formattedRestaurants = await restaurantsTransform(restaurants);
+
+      setIsLoading(false);
+      setRestaurants(formattedRestaurants);
+    } catch (err) {
+      console.log(err);
+      setIsLoading(false);
+      setError(err);
+    }
   };
 
   useEffect(() => {

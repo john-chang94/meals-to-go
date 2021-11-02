@@ -9,7 +9,6 @@ import MapScreen from "../features/map/screens/map";
 import { RestaurantsContextProvider } from "../contexts/restaurantsContext";
 import { LocationContextProvider } from "../contexts/locationContext";
 import { FavoritesContextProvider } from "../contexts/favoritesContext";
-import Settings from "../features/settings/settings";
 
 const Tab = createBottomTabNavigator();
 

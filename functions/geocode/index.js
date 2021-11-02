@@ -3,7 +3,6 @@ const { cities } = require("./geocodes");
 
 module.exports.geocodeRequest = (req, res, client) => {
   const { city, mock } = req.query;
-
   if (mock === "true") {
     const location = cities[city.toLowerCase()];
     return res.json(location);

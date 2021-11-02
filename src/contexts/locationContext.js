@@ -14,19 +14,21 @@ export const LocationContextProvider = ({ children }) => {
     setKeyword(searchKeyword);
   }
 
+  const getLocation = async () => {
+    try {
+      const location = await locationRequest(keyword.toLowerCase());
+      const formattedLocation = await locationTransform(location);
+  
+      setLocation(formattedLocation);
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
   useEffect(() => {
     if (!keyword.length) return; // Don't call api if no text when user taps "Search"
 
-    locationRequest(keyword.toLowerCase()) // Results of cities in api are in lowercase
-      .then(locationTransform)
-      .then(result => {
-        setIsLoading(false);
-        setLocation(result);
-      })
-      .catch((err) => {
-        setIsLoading(false);
-        setError(err);
-      })
+    getLocation();
   }, [keyword])
 
   return (
