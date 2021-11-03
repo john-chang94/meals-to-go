@@ -2,12 +2,13 @@ require("dotenv").config();
 const { mocks, addMockImage } = require("./mock");
 
 const addGoogleImage = (restaurant) => {
-  const photoRef = restaurant.photos[0];
+  const photoRef = restaurant.photos[0].photo_reference;
   if (!photoRef) {
     restaurant.photos = ["https://www.foodiesfeed.com/wp-content/uploads/2019/04/mae-mu-oranges-ice-600x750.jpg"];
     return restaurant;
   }
 
+  restaurant.photos = [`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${photoRef}&key=${process.env.GOOGLE_MAPS_API}`]
   return restaurant;
 }
 
@@ -21,7 +22,6 @@ module.exports.placesRequest = (req, res, client) => {
 
     return res.json(data.results);
   }
-  console.log('RUNNING')
 
   client.placesNearby({
     params: {
@@ -33,7 +33,6 @@ module.exports.placesRequest = (req, res, client) => {
     timeout: 1000
   })
   .then((response) => {
-    console.log(response.data.results)
     response.data.results = response.data.results.map(addGoogleImage);
     return res.json(response.data.results);
   })
