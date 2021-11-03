@@ -17,6 +17,6 @@ export const restaurantsTransform = (results = []) => {
 };
 
 export const restaurantsRequest = async (location = "37.7749295,-122.4194155") => {
-  const res = await axios.get(`https://167e-2603-8001-3140-784c-f85e-2d8d-8390-c427.ngrok.io/meals-to-go-a18a6/us-central1/placesNearby?location=${location}&mock=true`);
+  const res = await axios.get(`${host}/placesNearby?location=${location}`);
   return res.data;
 }

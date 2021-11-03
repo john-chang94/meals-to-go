@@ -1,6 +1,16 @@
 require("dotenv").config();
 const { mocks, addMockImage } = require("./mock");
 
+const addGoogleImage = (restaurant) => {
+  const photoRef = restaurant.photos[0];
+  if (!photoRef) {
+    restaurant.photos = ["https://www.foodiesfeed.com/wp-content/uploads/2019/04/mae-mu-oranges-ice-600x750.jpg"];
+    return restaurant;
+  }
+
+  return restaurant;
+}
+
 module.exports.placesRequest = (req, res, client) => {
   const { location, mock } = req.query;
   if (mock === "true") {
@@ -11,6 +21,7 @@ module.exports.placesRequest = (req, res, client) => {
 
     return res.json(data.results);
   }
+  console.log('RUNNING')
 
   client.placesNearby({
     params: {
@@ -22,7 +33,8 @@ module.exports.placesRequest = (req, res, client) => {
     timeout: 1000
   })
   .then((response) => {
-    response.data.results = response.data.results.map(addMockImage);
+    console.log(response.data.results)
+    response.data.results = response.data.results.map(addGoogleImage);
     return res.json(response.data.results);
   })
   .catch((err) => {
