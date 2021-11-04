@@ -1,5 +1,6 @@
-const dev = "https://167e-2603-8001-3140-784c-f85e-2d8d-8390-c427.ngrok.io/meals-to-go-a18a6/us-central1";
+const dev = "https://8f38-2603-8001-3140-784c-f85e-2d8d-8390-c427.ngrok.io/meals-to-go-a18a6/us-central1";
 const prod = "https://us-central1-meals-to-go-a18a6.cloudfunctions.net";
 
 export const isDevelopment = process.env.NODE_ENV === "development";
-export const host = process.env.NODE_ENV === isDevelopment ? dev : prod;
+export const host = isDevelopment ? dev : prod;
+export const isMock = isDevelopment;

@@ -1,6 +1,6 @@
 import axios from "axios";
 import camelize from "camelize";
-import { host } from "../../env";
+import { host, isMock } from "../../env";
 
 // Adjust returned data to what we need in frontend
 export const restaurantsTransform = (results = []) => {
@@ -17,6 +17,6 @@ export const restaurantsTransform = (results = []) => {
 };
 
 export const restaurantsRequest = async (location = "37.7749295,-122.4194155") => {
-  const res = await axios.get(`${host}/placesNearby?location=${location}`);
+  const res = await axios.get(`${host}/placesNearby?location=${location}&mock=${isMock}`);
   return res.data;
 }

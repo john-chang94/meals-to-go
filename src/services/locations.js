@@ -1,6 +1,6 @@
 import axios from "axios";
 import camelize from "camelize";
-import { host } from "../../env";
+import { host, isMock } from "../../env";
 
 export const locationTransform = (result) => {
   const camelizedResponse = camelize(result); // Adding camelize incase google api adds more stuff
@@ -13,9 +13,8 @@ export const locationTransform = (result) => {
 export const locationRequest = async (search) => {
   try {
     const res = await axios.get(
-      `${host}/geocode?city=${search}`
+      `${host}/geocode?city=${search}&mock=${isMock}`
       );
-      
     return res.data;
   } catch (err) {
     console.log(err);

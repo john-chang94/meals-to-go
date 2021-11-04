@@ -1,6 +1,5 @@
 module.exports.cities = {
-    antwerp: {
-      results: [
+    antwerp: [
         {
           geometry: {
             location: {
@@ -20,9 +19,7 @@ module.exports.cities = {
           },
         },
       ],
-    },
-    "san francisco": {
-      results: [
+    "san francisco": [
         {
           geometry: {
             location: { lat: 37.7749295, lng: -122.4194155 },
@@ -34,9 +31,7 @@ module.exports.cities = {
         },
       ],
       status: "OK",
-    },
-    chicago: {
-      results: [
+    chicago: [
         {
           geometry: {
             location: {
@@ -56,9 +51,7 @@ module.exports.cities = {
           },
         },
       ],
-    },
-    toronto: {
-      results: [
+    toronto: [
         {
           geometry: {
             location: {
@@ -78,5 +71,4 @@ module.exports.cities = {
           },
         },
       ],
-    },
   };
