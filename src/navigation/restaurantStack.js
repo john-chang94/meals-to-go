@@ -17,7 +17,7 @@ export default function RestaurantStack() {
         ...TransitionPresets.ModalPresentationIOS,
       }}
     >
-      <Stack.Screen name="Restaurants" component={Restaurants} />
+      <Stack.Screen name="RestaurantsList" component={Restaurants} />
       <Stack.Screen name="RestaurantDetail" component={RestaurantDetails} />
     </Stack.Navigator>
   );

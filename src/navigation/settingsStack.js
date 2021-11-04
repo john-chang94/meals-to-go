@@ -18,7 +18,10 @@ export default function SettingsStack() {
         cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
       }}
     >
-      <Stack.Screen name="Settings" component={SettingsScreen} />
+      <Stack.Screen
+        name="Options" // Not named "Settings" because two navigators
+        component={SettingsScreen}
+      />
       <Stack.Screen name="Favorites" component={FavoritesScreen} />
       <Stack.Screen name="Camera" component={CameraScreen} />
     </Stack.Navigator>
