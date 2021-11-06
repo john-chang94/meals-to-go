@@ -10,6 +10,7 @@ import CheckoutScreen from "../features/checkout/screens/checkout";
 import { RestaurantsContextProvider } from "../contexts/restaurantsContext";
 import { LocationContextProvider } from "../contexts/locationContext";
 import { FavoritesContextProvider } from "../contexts/favoritesContext";
+import { CartContextProvider } from "../contexts/cartContext";
 
 const Tab = createBottomTabNavigator();
 
@@ -39,12 +40,14 @@ export const AppNavigator = () => (
   <FavoritesContextProvider>
     <LocationContextProvider>
       <RestaurantsContextProvider>
-        <Tab.Navigator screenOptions={createScreenOptions}>
-          <Tab.Screen name="Restaurants" component={RestaurantStack} />
-          <Tab.Screen name="Checkout" component={CheckoutScreen} />
-          <Tab.Screen name="Map" component={MapScreen} />
-          <Tab.Screen name="Settings" component={SettingsStack} />
-        </Tab.Navigator>
+        <CartContextProvider>
+          <Tab.Navigator screenOptions={createScreenOptions}>
+            <Tab.Screen name="Restaurants" component={RestaurantStack} />
+            <Tab.Screen name="Checkout" component={CheckoutScreen} />
+            <Tab.Screen name="Map" component={MapScreen} />
+            <Tab.Screen name="Settings" component={SettingsStack} />
+          </Tab.Navigator>
+        </CartContextProvider>
       </RestaurantsContextProvider>
     </LocationContextProvider>
   </FavoritesContextProvider>
