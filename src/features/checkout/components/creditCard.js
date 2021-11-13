@@ -2,7 +2,7 @@ import React from "react";
 import { CreditCardInput } from "react-native-credit-card-input";
 import { cardTokenRequest } from "../../../services/checkout";
 
-export default function CreditCard({ name = "John" }) {
+export default function CreditCard({ name }) {
     const onChange = async (formData) => {
         const { values, status } = formData;
         const isIncomplete = Object.values(status).includes("incomplete");
