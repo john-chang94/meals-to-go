@@ -1,11 +1,22 @@
 import styled from "styled-components";
-import { Avatar, TextInput, Button } from "react-native-paper";
+import { Avatar, TextInput, Button, ActivityIndicator, Colors } from "react-native-paper";
 import { colors } from "../../../theme/colors";
 
 export const CartIconContainer = styled.View`
     align-items: center;
     justify-content: center;
     flex: 1;
+`;
+
+export const PaymentProcessing = styled(ActivityIndicator).attrs({
+    size: 128,
+    animating: true,
+    color: Colors.blue300
+})`
+    position: absolute;
+    top: 50%;
+    left: 35%;
+    z-index: 99;
 `;
 
 // 'bg' is potentially passed as a prop from checkout screen (bg="red")
